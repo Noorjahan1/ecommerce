@@ -1,0 +1,9 @@
+/* filepath: /e:/EcommerceSite1/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add any custom global styles here */
+body {
+  font-family: 'Arial', sans-serif;
+}

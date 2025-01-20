@@ -1,0 +1,49 @@
+.navbar {
+    background-color: #3e4444;
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    
+}
+.navbar a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.navbar a.active {
+    background-color: #3e4444;
+    color: white;
+}
+.login{
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 8px;
+    margin-left: auto;
+}
+.login:hover{
+    cursor: pointer;
+}
+.shoppingCart{
+   
+    margin-right: 8px;
+}
