@@ -4,3 +4,14 @@
 .pageColor{
     color:#777a7a82;
 }
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #222831;
+    height: 100vh;
+    font-family: sans-serif;
+    text-align: center;
+    color: #fff;
+  }

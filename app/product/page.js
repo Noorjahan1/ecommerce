@@ -32,7 +32,7 @@ import styles from './product.module.css';
       <h1 className="text-3xl font-bold text-center mb-8">Product List</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {currentProducts.map(product => (
-          <a href='/singleProduct' className="no-underline text-black" key={product.id}>
+          <a href={`/product/${product.id}`} className="no-underline text-black" key={product.id}>
             <div className="bg-white shadow-md rounded-lg p-4">
             <img src={product.thumbnail} alt={product.title} className="w-full h-48 object-cover rounded-t-lg" />
             <h2 className="text-xl font-semibold mt-4">{product.title}</h2>
