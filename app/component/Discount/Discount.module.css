@@ -1,0 +1,37 @@
+.discountStar {
+    position: absolute;
+    top: -10px; /* Adjusted position */
+    right: -10px; /* Adjusted position */
+    width: 80px; /* Width of the star */
+    height: 80px; /* Height of the star */
+    background-color: gold;
+    /* Proper star shape */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15); /* Shadow for 3D effect */
+     /* Add rotating animation */
+    border-radius: 50%;
+}
+
+.discountText {
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    
+    transform: translate(-30%, -10%);
+    text-align: center;
+    white-space: nowrap;
+    animation: rotateStar 3s infinite;
+    font-size: 14px; /* Font size for text inside the star */
+    font-weight: bold;
+    color: red;
+    /* Text color for better contrast */
+}
+
+/* Keyframes for rotating animation */
+@keyframes rotateStar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg); /* Full rotation */
+    }
+}

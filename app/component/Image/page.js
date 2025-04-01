@@ -27,8 +27,9 @@ function ImageZoom({thumbnail}) {
     <div
       ref={imageContainerRef}
       style={{
-        width: '100%',
-        height: '100%',
+        width: '400px',
+        height: '400px',
+        
         overflow: 'hidden',
         position: 'relative',
       }}
