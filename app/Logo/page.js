@@ -6,8 +6,8 @@ import { faUserPlus} from '@fortawesome/free-solid-svg-icons';
 function Logo() {
   return (
     <div className={`${style.logoContent} flex justify-between items-center`}>
-      <h1 className='text-[30px] font-bold'><span className={style.Logo}>L</span>OGO</h1>
-      <a href='/createAccount' className='text-white text-[20px]'>  Create Account <FontAwesomeIcon icon={faUserPlus} className=' ml-2 ' /></a> 
+      <a href='/'><h1 className='text-[30px] font-bold'><span className={style.Logo}>L</span>OGO</h1></a>
+      <a href='/Register' className='text-white text-[20px]'>  Create Account <FontAwesomeIcon icon={faUserPlus} className=' ml-2 ' /></a> 
     </div>
   )
 }

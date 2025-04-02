@@ -3,6 +3,8 @@ import ImageZoom from "../../component/Image/page";
 import Image from "next/image";
 import Discount from "@/app/component/Discount/page";
 import Rating from "@/app/component/Rating/page";
+import Review from "@/app/component/Review/page";
+
 export default async function Product({ params }) {
     const { id } = params;
 
@@ -18,6 +20,7 @@ export default async function Product({ params }) {
     const { title, thumbnail, description, price,discountPercentage,stock,tags,brand,sku,weight,warrantyInformation,shippingInformation,availabilityStatus,reviews,rating,returnPolicy,minimumOrderQuantity } = product;
 
     return (
+        <div className="container mx-auto p-4">
         <div className="p-5 flex flex-col md:flex-row items-start gap-8">
             {/* Left Side: Image */}
             <div className="w-full md:w-1/2">
@@ -62,6 +65,11 @@ export default async function Product({ params }) {
                     <button className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300">Add to Cart</button>
                     <button className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300">Buy Now</button>
                 </div>
+            </div>
+            
+        </div>
+        <div className="w-full mt-8">
+                  <Review reviews={reviews} />
             </div>
         </div>
     );
