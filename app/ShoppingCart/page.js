@@ -74,7 +74,7 @@ export default function ShoppingCart() {
             </table>
             <div className="mt-6 flex justify-between items-center">
               <p className="text-lg font-bold text-gray-800">
-                Total: <span className="text-blue-500">${calculateTotal()}</span>
+                Total: <span className="text-gray-500">${calculateTotal()}</span>
               </p>
               <button className="bg-slate-400 text-white py-2 px-6 rounded-lg hover:bg-slate-600 transition duration-300">
                 Proceed to Checkout

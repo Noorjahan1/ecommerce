@@ -14,13 +14,13 @@ function Navbar({ isLoggedIn, onLogin, onLogout }) {
             <a href="/" className="text-white hover:text-gray-400">Home</a>
           </li>
           <li className="mr-6">
-            <a href="/shop" className="text-white hover:text-gray-400">
+            <a href="/" className="text-white hover:text-gray-400">
               <FontAwesomeIcon icon={faShop} className="mr-2" />
               Shop
             </a>
           </li>
           <li className="mr-6">
-            <a href="/shoppingCart" className="text-white hover:text-gray-400">
+            <a href="/ShoppingCart" className="text-white hover:text-gray-400">
               <FontAwesomeIcon icon={faShoppingCart} className="mr-2" />
               Shopping Cart
             </a>
