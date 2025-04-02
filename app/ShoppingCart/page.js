@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 export default function ShoppingCart() {
   const [cartItems, setCartItems] = useState([
@@ -76,9 +77,9 @@ export default function ShoppingCart() {
               <p className="text-lg font-bold text-gray-800">
                 Total: <span className="text-gray-500">${calculateTotal()}</span>
               </p>
-              <button className="bg-slate-400 text-white py-2 px-6 rounded-lg hover:bg-slate-600 transition duration-300">
+              <Link href="/CheckOut" className="bg-slate-400 text-white py-2 px-6 rounded-lg hover:bg-slate-600 transition duration-300">
                 Proceed to Checkout
-              </button>
+              </Link>
             </div>
           </div>
         )}
