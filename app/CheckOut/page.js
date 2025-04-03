@@ -1,7 +1,10 @@
 'use client';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation'; // Import useRouter for navigation
+import Link from 'next/link'; // Import Link for navigation
 
 export default function Checkout() {
+  const router = useRouter(); // Initialize the router for navigation
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -28,6 +31,10 @@ export default function Checkout() {
     e.preventDefault();
     console.log('Order placed:', formData);
     alert('Order placed successfully!');
+  };
+
+  const handleCancel = () => {
+    router.back(); // Navigate back to the previous page
   };
 
   return (
@@ -184,16 +191,25 @@ export default function Checkout() {
             </div>
           </div>
 
-          {/* Submit Button */}
-          <div className="mt-6 text-center">
+          {/* Submit and Cancel Buttons */}
+          <div className="mt-6 text-center space-x-4">
             <button
               type="submit"
               className="bg-slate-400 text-white py-3 px-8 rounded-lg hover:bg-slate-500 transition duration-300 shadow-md"
             >
               Place Order
             </button>
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="bg-red-500 text-white py-3 px-8 rounded-lg hover:bg-red-600 transition duration-300 shadow-md"
+            >
+              Cancel
+            </button>
           </div>
         </form>
+
+       
 
         {/* Stripe Logo */}
         <div className="mt-6 text-center">

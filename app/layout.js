@@ -1,13 +1,14 @@
-
 import Navbar from '../app/navbar/page.js'; // Correct path to Navbar component
 import "./global.css";
 import Logo from '../app/Logo/page.js'; // Correct path to Logo component
- // Correct path to AuthProvider
- const meta = {
+import { CartProvider } from './context/CartContext'; // Import CartProvider
+
+const meta = {
   title: 'Ecommerce Site',
   description: 'An ecommerce site built with Next.js',
   keywords: 'ecommerce, next.js, react',
- }
+}
+
 export default function RootLayout({ children }) {
   // Manage auth state locally
   return (
@@ -16,12 +17,13 @@ export default function RootLayout({ children }) {
         <title>{meta.title}</title>
       </head>
       <body>
-        {/* Pass isLoggedIn, onLogin, and onLogout to Navbar */}
-       {/* App content */}
-        <Navbar  />
-        
-        <Logo />
-        {children}
+        <CartProvider>
+          {/* Pass isLoggedIn, onLogin, and onLogout to Navbar */}
+          {/* App content */}
+          <Navbar />
+          <Logo />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
