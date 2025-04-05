@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'; // Correct import for useRouter in 
 
 // Create the AuthContext with default values
 export const AuthContext = createContext({
-  user: false,
+  user: null,
   login: () => {},
   logout: () => {},
 });
@@ -17,24 +17,22 @@ export function AuthProvider({ children }) {
   // Synchronize user state with localStorage using useEffect
   useEffect(() => {
     const storedUser = localStorage.getItem('accessToken');
-    if(storedUser) {
-      setUser(true); // If user data exists in localStorage, set user state to true
+    if (storedUser) {
+      setUser(JSON.parse(storedUser)); // Parse and set the user state
     }
-   
-  }, [user]); // Run only once when the component mounts
+  }, []); // Run only once when the component mounts
 
   // Function to log in a user
-  const login = () => {
-     // Set user state with the provided data
-    localStorage.getItem('accessToken');
-    setUser(true); // Save user data to localStorage
-    router.push('/'); // Redirect to the homepage or dashboard after login
+  const login = (userData) => {
+    setUser(userData); // Set user state with the provided data
+
+    router.push(`/User/${localStorage.getItem("accessToken")}`); // Redirect to the user's dashboard using their id
   };
 
   // Function to log out a user
   const logout = () => {
     localStorage.removeItem('accessToken'); // Remove user data from localStorage
-    setUser(false); // Reset user state
+    setUser(null); // Reset user state
     router.push('/Login'); // Redirect to the login page
   };
 

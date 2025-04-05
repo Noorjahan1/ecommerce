@@ -33,7 +33,7 @@ export default function Login() {
             }
 
             // Save user data to localStorage
-            login();
+            login(data);
 
              // Redirect to the homepage after login
         } catch (err) {
