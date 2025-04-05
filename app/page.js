@@ -13,10 +13,10 @@ import Category from "./category/page";
 export default function Home() {
   return (
    
+    <>
       
-         
-          <Product />
-        
+         <Category /><Product />
+       </> 
     
   );
 }

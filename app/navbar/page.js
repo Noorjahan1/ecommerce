@@ -1,13 +1,13 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext'; // Import AuthContext
 import styles from './navbar.module.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket, faShoppingCart, faShop } from '@fortawesome/free-solid-svg-icons';
-import { useRouter } from 'next/navigation'; // Import useRouter for redirection
 
 function Navbar() {
- 
+  const { user, logout } = useContext(AuthContext); // Use AuthContext to get user and logout function
 
   return (
     <div className={styles.navbar}>
@@ -29,14 +29,14 @@ function Navbar() {
             </a>
           </li>
           <li className={styles.login}>
-            {1? (
-              <a
-                
+            {user ? (
+              <button
+                onClick={logout} // Call logout function directly
                 className="text-white flex items-center hover:text-gray-400 cursor-pointer"
               >
                 <FontAwesomeIcon icon={faRightToBracket} className="mr-2" />
                 Logout
-              </a>
+              </button>
             ) : (
               <a href="/Login" className="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faRightToBracket} className="mr-2" />

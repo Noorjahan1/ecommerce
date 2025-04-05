@@ -1,6 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useRouter } from 'next/navigation'; // Import useRouter for redirection
+import { AuthContext } from '../context/AuthContext'; // Import AuthContext
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -8,7 +9,7 @@ export default function Login() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const router = useRouter(); // Initialize useRouter for navigation
-
+    const { login } = useContext(AuthContext); // Use AuthContext to get login function
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
@@ -32,8 +33,9 @@ export default function Login() {
             }
 
             // Save user data to localStorage
-            localStorage.getItem("acccessToken");
-            router.push('/'); // Redirect to the homepage after login
+            login();
+
+             // Redirect to the homepage after login
         } catch (err) {
             setError(err.message);
         } finally {

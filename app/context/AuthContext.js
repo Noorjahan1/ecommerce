@@ -1,52 +1,51 @@
 'use client';
-import React, { createContext, useContext, useReducer, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'; // Correct import for useRouter in Next.js 13+
 
-// Initial state for the auth context
-const initialState = {
-    user: null, // User is null when not logged in
-};
-
-// Reducer function to handle auth actions
-function authReducer(state, action) {
-    switch (action.type) {
-        case 'LOGIN':
-            return { ...state, user: action.payload }; // Set the user data
-        case 'LOGOUT':
-            return { ...state, user: null }; // Clear the user data
-        default:
-            return state;
-    }
-}
-
-// Create the AuthContext
-export const AuthContext = createContext();
+// Create the AuthContext with default values
+export const AuthContext = createContext({
+  user: false,
+  login: () => {},
+  logout: () => {},
+});
 
 // AuthProvider component to wrap the app
 export function AuthProvider({ children }) {
-    const [state, dispatch] = useReducer(authReducer, initialState);
-    const router = useRouter();
+  const [user, setUser] = useState(null); // State to hold user data
+  const router = useRouter(); // Initialize router for redirection
 
-    // Function to log in a user
-    const login = useCallback((userData) => {
-        dispatch({ type: 'LOGIN', payload: userData }); // Dispatch login action
-        localStorage.getItem('accessToken'); // Save user data to localStorage
-        router.push('/'); // Redirect to the homepage or dashboard after login
-    }, [router]);
+  // Synchronize user state with localStorage using useEffect
+  useEffect(() => {
+    const storedUser = localStorage.getItem('accessToken');
+    if(storedUser) {
+      setUser(true); // If user data exists in localStorage, set user state to true
+    }
+   
+  }, [user]); // Run only once when the component mounts
 
-    // Function to log out a user
-    const logout = useCallback(() => {
-        dispatch({ type: 'LOGOUT' }); // Dispatch logout action
-        localStorage.removeItem('accessToken'); // Remove user data from localStorage
-        router.push('/Login'); // Redirect to the login page
-    }, [router]);
+  // Function to log in a user
+  const login = () => {
+     // Set user state with the provided data
+    localStorage.getItem('accessToken');
+    setUser(true); // Save user data to localStorage
+    router.push('/'); // Redirect to the homepage or dashboard after login
+  };
 
-    return (
-        <AuthContext.Provider value={{ user: state.user, login, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
+  // Function to log out a user
+  const logout = () => {
+    localStorage.removeItem('accessToken'); // Remove user data from localStorage
+    setUser(false); // Reset user state
+    router.push('/Login'); // Redirect to the login page
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
-
-
+// Custom hook to use the AuthContext
+export function useAuth() {
+  return useContext(AuthContext);
+}
