@@ -33,7 +33,9 @@ export default function Login() {
             }
 
             // Save user data to localStorage
-            login(data);
+            localStorage.setItem('accessToken', JSON.stringify(data)); // Store accessToken in localStorage
+            localStorage.setItem('username', username); // Store username in localStorage
+            login(data); // Call login function from AuthContext    
 
              // Redirect to the homepage after login
         } catch (err) {

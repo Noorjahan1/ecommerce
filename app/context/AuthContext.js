@@ -25,8 +25,9 @@ export function AuthProvider({ children }) {
   // Function to log in a user
   const login = (userData) => {
     setUser(userData); // Set user state with the provided data
-
-    router.push(`/User/${localStorage.getItem("accessToken")}`); // Redirect to the user's dashboard using their id
+    localStorage.setItem('accessToken', JSON.stringify(userData)); // Store user data in localStorage
+    localStorage.setItem('username', userData.username); // Store username in localStorage
+    router.push(`/User/User`); // Redirect to the user's dashboard using their id
   };
 
   // Function to log out a user
