@@ -19,15 +19,18 @@ export default function RootLayout({ children }) {
         <title>{meta.title}</title>
       </head>
       <body>
+        <></>
         <AuthProvider>
-<CartProvider> {/* Wrap the app with CartProvider */}
+        <CartProvider>
+        
+ {/* Wrap the app with CartProvider */}
           <Navbar />
           <Logo />
-         
           
+         
           {children}
 </CartProvider>
-        </AuthProvider>
+</AuthProvider>
       </body>
     </html>
   );

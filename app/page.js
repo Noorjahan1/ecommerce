@@ -15,7 +15,8 @@ export default function Home() {
    
     <>
       
-         <Category /><Product />
+         <Category />
+         <Product />
        </> 
     
   );
