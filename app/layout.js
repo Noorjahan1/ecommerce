@@ -1,6 +1,8 @@
-import Navbar from '../app/navbar/page.js'; // Correct path to Navbar component
-import "./global.css";
-import Logo from '../app/Logo/page.js'; // Correct path to Logo component
+import Navbar from './navbar/page.js'; // Import Navbar component
+import Logo from '../app/Logo/page.js'; // Import Logo component
+import Category from './category/page.js'; // Import Category component
+import Product from './product/page.js'; // Import Product component
+import "./global.css"; // Import global styles
 import { CartProvider } from './context/CartContext'; // Import CartProvider
 
 const meta = {
@@ -10,18 +12,17 @@ const meta = {
 }
 
 export default function RootLayout({ children }) {
-  // Manage auth state locally
   return (
     <html lang="en">
       <head>
         <title>{meta.title}</title>
       </head>
       <body>
-        <CartProvider>
-          {/* Pass isLoggedIn, onLogin, and onLogout to Navbar */}
-          {/* App content */}
+        <CartProvider> {/* Wrap the app with CartProvider */}
           <Navbar />
           <Logo />
+         
+          
           {children}
         </CartProvider>
       </body>

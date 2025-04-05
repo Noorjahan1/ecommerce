@@ -1,11 +1,14 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './navbar.module.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket, faShoppingCart, faShop } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/navigation'; // Import useRouter for redirection
 
-function Navbar({ isLoggedIn, onLogin, onLogout }) {
+function Navbar() {
+ 
+
   return (
     <div className={styles.navbar}>
       <nav>
@@ -26,16 +29,16 @@ function Navbar({ isLoggedIn, onLogin, onLogout }) {
             </a>
           </li>
           <li className={styles.login}>
-            {isLoggedIn ? (
+            {1? (
               <a
-                onClick={onLogout}
+                
                 className="text-white flex items-center hover:text-gray-400 cursor-pointer"
               >
                 <FontAwesomeIcon icon={faRightToBracket} className="mr-2" />
                 Logout
               </a>
             ) : (
-              <a href="/Login" className="text-white hover:text-gray-400" onClick={onLogin}>
+              <a href="/Login" className="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faRightToBracket} className="mr-2" />
                 Login
               </a>
